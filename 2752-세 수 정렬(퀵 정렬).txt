@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+void quickSort(int* num, int start, int end);
+
+int main() {
+	cin.tie(NULL);
+	cin.sync_with_stdio(false);
+	cout.sync_with_stdio(false);
+
+	int num[1010];
+	int n;
+	for (int i = 0; i < 3; i++) {
+		cin >> n;
+		num[i] = n;
+	}
+	quickSort(num, 0, 2);
+	for (int i = 0; i < 3; i++){
+		cout << num[i] << " ";
+	}
+	cout << "\n";
+	return 0;
+}
+
+void quickSort(int* num, int start, int end) {
+	if (start >= end) {	
+		return;
+	}
+	int key = start;
+	int i = start + 1; 
+	int j = end;	
+	int temp;
+
+	while (i <= j) {	
+		while (i <= end && num[i] <= num[key]) {	
+			i++;
+		}
+		while (j > start && num[j] >= num[key]) {		
+			j--;
+		}
+		if (i > j) {	
+			temp = num[j];
+			num[j] = num[key];
+			num[key] = temp;
+		}
+		else {
+			temp = num[j];
+			num[j] = num[i];
+			num[i] = temp;
+		}
+		quickSort(num, start, j - 1);
+		quickSort(num, j + 1, end);
+	}
+}
