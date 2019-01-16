@@ -1,0 +1,31 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	cin.tie(NULL);
+	cin.sync_with_stdio(false);
+	cout.sync_with_stdio(false);
+
+	int n, num, sum = 0;
+	int* a;
+	int* b;
+	cin >> n;
+	a = new int[n];
+	b = new int[n];
+	for (int i = 0; i < n; i++) {
+		cin >> num;
+		a[i] = num;
+	}
+	for (int i = 0; i < n; i++) {
+		cin >> num;
+		b[i] = num;
+	}
+	sort(a, a + n);
+	sort(b, b + n, greater<int>());
+	for (int i = 0; i < n; i++) {
+		sum += a[i] * b[i];
+	}
+	cout << sum << "\n";
+	return 0;
+}
