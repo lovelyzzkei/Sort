@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+// point of bubble sort is "what if we swap two numbers and place smaller numbers before larger numbers?"
+// bigger number moves to back of array so we have to search front part of array
+void bubbleSort(int* num);
+
+int main() {
+	cin.tie(NULL);
+	cin.sync_with_stdio(false);
+	cout.sync_with_stdio(false);
+
+	int num[3];
+	int n;
+	for (int i = 0; i < 3; i++) {
+		cin >> n;
+		num[i] = n;
+	}
+	bubbleSort(num);
+	for (int i = 0; i < 3; i++){
+		cout << num[i] << " ";
+	}
+	cout << "\n";
+	return 0;
+}
+
+void bubbleSort(int* num) {
+	int i, j, temp;
+	for (i = 0; i < 2; i++) {
+		for (j = 0; j < 2 - i; j++) {
+			if (num[j] > num[j + 1]) {
+				temp = num[j];
+				num[j] = num[j + 1];
+				num[j + 1] = temp;
+			}
+		}
+	}
+}
