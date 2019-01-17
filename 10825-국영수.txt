@@ -1,0 +1,55 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+class student {
+public:
+	student(string name, int a, int b, int c);
+	string name;
+	int korean;
+	int english;
+	int math;
+	bool operator < (const student& s1) const;
+};
+vector<student> v1;
+
+int main() {
+	cin.tie(NULL);
+	cin.sync_with_stdio(false);
+	cout.sync_with_stdio(false);
+
+	int n, korean, english, math;
+	string name;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> name >> korean >> english >> math;
+		v1.push_back(student(name, korean, english, math));
+	}
+	sort(v1.begin(), v1.end());
+	for (int i = 0; i < n; i++) {
+		cout << v1[i].name << "\n";
+	}
+	return 0;
+}
+
+student::student(string name, int a, int b, int c)
+	:name(name), korean(a), english(b), math(c) {
+
+}
+
+bool student::operator< (const student& s1) const {
+	if (this->korean != s1.korean) {
+		return this->korean > s1.korean;
+	}
+	else if (this->english != s1.english) {
+		return this->english < s1.english;
+	}
+	else if (this->math != s1.math) {
+		return this->math > s1.math;
+	}
+	else {
+		return this->name < s1.name;
+	}
+}
